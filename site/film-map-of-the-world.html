@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Film Map of the World</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <script src='javascripts/mapbox-gl.js'></script>
+    <link href='feathericon/build/css/feathericon.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" type="text/css" href="css/flaticon.css">
+    <link href='css/mapbox-gl.css' rel='stylesheet'/>
+    <link href='css/film-map-of-the-world.css' rel='stylesheet'/>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="section1-wrapper" class="wrapper">
+        <div id='map'></div>
+        <div class="container">
+            <div class="header">
+                <p>🎬<strong>Map of the World...</strong><br>but the 10 biggest cities 
+                  (by population)/highest mountains/most popular points of interest 
+                  of each country are the 10 most <a id="wikipediaed" href="http://en.wikipedia.org" target="_blank">Wikipedia'ed</a> films set in that country.</p>   
+            </div>
+            <button id="creditButton">i</button>
+
+            <div id="wikidef">
+                <p>"Wikipedia'ed" is quantified by daily median page views between June 19, 2015--2019</p>
+            </div>
+
+            
+            <p id="extract">
+              <span id="info"></span>
+              <a id="wikiLink" target="_blank">
+                <i class='flaticon-wikipedia-3'></i>
+              </a>
+            </p>
+            <section id="credit">
+              <div id="credit--box">
+                  <p class='about__byline'>By <a href='https://pudding.cool/author/matt-daniels' target='_blank'>Trang Le</a>.
+                    </p>
+                    <h4>Methodoly</h4>
+                    <p>The dataset used to create this map was scraped using the <a href='https://www.mediawiki.org/wiki/API:Main_page'
+                        target='_blank'>Wikipedia API</a>. The period of collection was from July, 2015–May, 2019, from English
+                      Wikipedia.</p>
+                    <p>Inspired and heavily influenced by the <a
+                        href='https://pudding.cool/2019/05/people-map/' target='_blank'>People Map of the US</a> 
+                        by <a href='https://pudding.cool' target='_blank'>The Pudding</a>.
+                    </p>
+                    <h4>Data</h4>
+                    <p>Films set in country were based on the thousands Wikipedia pages under hundreds of "Films set in X" categories 
+                      and subcategories on Wikipedia.
+                      The top person from each city was determined by using median pageviews (with a minimum of 1 year of traffic). We
+                      chose to include multiple occurrences for a single person because there is both no way to determine which is more
+                      accurate and people can “be from” multiple places. 
+                    </p>
+                    <p>Get in touch with us by email at sup@pudding.cool.</p>
+              </div>
+            </section>
+        </div>
+        
+    </div>
+    <script src='javascripts/film-map-of-the-world.js'></script>
+  </body>
+</html>
