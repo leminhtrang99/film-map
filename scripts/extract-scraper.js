@@ -11,6 +11,7 @@ var lineReader = require('readline').createInterface({
     input:fs.createReadStream('films.csv')
 });
 
+//Get country, corresponding film title and push each into arrays at the same index
 lineReader.on('line', function (line) {
     var country = line.substring(0, line.indexOf(','));
     var title = line.substring(line.indexOf(',')+1,line.length);
@@ -19,8 +20,7 @@ lineReader.on('line', function (line) {
     films.push(title);
 });
 
-    //console.log(title);
-    //getExtracts(title, country);
+//Get the 200-char extract about the movie
 async function getExtracts(){
     for (var i = 0; i < countries.length; i++) {
         let country = countries[i];

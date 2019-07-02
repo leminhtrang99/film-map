@@ -14,21 +14,19 @@ var stream = fs.createWriteStream('films1.csv');
 var streamSubCat = fs.createWriteStream('subcat.csv');
 var streamPageViews = fs.createWriteStream('page_views1.csv');
 
-
+//Get all films in a Category:Films_set_in_X page
 async function getData() {
     await fetch(catUrl)
         .then(response => {
             return response.json();
         })
         .then(data => {
-            //console.log(data);
+            //Push all pages under the Category: page into an array
             let catMembers = [];
             catMembers = data.query.categorymembers;
             for (var i = 0; i < catMembers.length; i++) {
                 catMemberTitles.push(catMembers[i]['title'].replace(/\s/g, '_'));
             }
-
-            //crawlCatMembers();
         })
         .then(() => {
             crawlCatMembers();
@@ -38,10 +36,12 @@ async function getData() {
         });
 
     async function crawlCatMembers(){
+        //Write file headers
         streamPageViews.write('country,title,views_total,views_median,title_clean,extract'+'\r\n');
         stream.write('country,title'+'\r\n');
+    //Access each title page in the array
     for (var i = 0; i < catMemberTitles.length; i++) {
-        //console.log(catMemberUrl+catMemberTitles[i]+'&cmlimit=500');
+        //Extract country
         let country = catMemberTitles[i].substring(22);
         await fetch(catMemberUrl+catMemberTitles[i]+'&cmlimit=500')
             .then(response => {
@@ -52,8 +52,10 @@ async function getData() {
                 for (var i = 0; i < data.query.categorymembers.length; i++) {
                     let title = data.query.categorymembers[i]['title'];
                     title = decodeURIComponent(title);
+                    //If the page is itself a Category: page, push into subcat array
                     if (title.substring(0,8)==='Category') {
                         streamSubCat.write(country+','+'"'+title.replace(/\s/g, '_')+'"'+'\r\n');
+                    //If not, push into title array
                     } else {
                         films.push(title.replace(/\s/g, '_'));
                         var titleUnderScore = title.replace(/\s/g, '_');
@@ -70,6 +72,7 @@ async function getData() {
             .catch(err => {
                 console.log(err);
             });
+        //Calculate page views 
         async function getPageViews(title){
             await fetch(pageViewsUrl+encodeURIComponent(title)+datePoints)
                 .then(response=> {
@@ -94,18 +97,6 @@ async function getData() {
 }
 
 getData();
-
-// function writeToFile(){
-// var stream = fs.createWriteStream('films.csv');
-// stream.write('country,title'+'\r\n');
-// for (var i = 0; i < filmArray.length; i++) {
-//     let films = filmArray[i];
-//     let country = catMemberTitles[i].substring(22);
-//     for (var j=0; j < films.length; j++) {
-//         stream.write(country+','+films[j]+'\r\n');
-//         }
-//     }
-// }
 
 
 
