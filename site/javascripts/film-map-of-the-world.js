@@ -51,6 +51,10 @@ map.on('mouseenter', 'film-label', function(e){
   document.getElementById('wikiLink').href = url;
   document.getElementById('wikiLink').classList.add('show');
 
+  $('#info').html(function(i, v){
+    var matches = /(.+)( is a.+)/gi.exec(v);
+    return '<strong>' + matches[1] + '</strong>' + matches[2];
+  });
 
 });
 
@@ -77,3 +81,8 @@ document.getElementById('creditButton').addEventListener('click',showCreds);
 function showCreds(){
   document.getElementById('credit').classList.add('show');
 }
+
+document.getElementById('credit').addEventListener('click', function(){
+  document.getElementById('credit').classList.remove('show');
+})
+

@@ -5,7 +5,7 @@
     <title>Film Map of the World</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
     <script src='javascripts/mapbox-gl.js'></script>
-    <link href='feathericon/build/css/feathericon.min.css' rel='stylesheet'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/flaticon.css">
     <link href='css/mapbox-gl.css' rel='stylesheet'/>
     <link href='css/film-map-of-the-world.css' rel='stylesheet'/>
@@ -35,7 +35,8 @@
             <button id="creditButton">i</button>
 
             <div id="wikidef">
-                <p>"Wikipedia'ed" is quantified by daily median page views between June 19, 2015--2019</p>
+                <p>"Wikipedia'ed" is quantified by daily median page views
+                  <br> between June 19, 2015--June 19, 2019</p>
             </div>
 
             
@@ -47,24 +48,25 @@
             </p>
             <section id="credit">
               <div id="credit--box">
-                  <p class='about__byline'>By <a href='https://pudding.cool/author/matt-daniels' target='_blank'>Trang Le</a>.
+                  <p class='about__byline'>By <a href='' target='_blank'>Trang Le</a>
                     </p>
                     <h4>Methodoly</h4>
-                    <p>The dataset used to create this map was scraped using the <a href='https://www.mediawiki.org/wiki/API:Main_page'
-                        target='_blank'>Wikipedia API</a>. The period of collection was from July, 2015–May, 2019, from English
-                      Wikipedia.</p>
+                    <p>The dataset used to create this map was scraped from the English Wikipedia using the <a href='https://www.mediawiki.org/wiki/API:Main_page'
+                        target='_blank'>Wikipedia API</a>. The period of collection was from June 19, 2015–June 19, 2019.</p>
                     <p>Inspired and heavily influenced by the <a
                         href='https://pudding.cool/2019/05/people-map/' target='_blank'>People Map of the US</a> 
                         by <a href='https://pudding.cool' target='_blank'>The Pudding</a>.
                     </p>
-                    <h4>Data</h4>
-                    <p>Films set in country were based on the thousands Wikipedia pages under hundreds of "Films set in X" categories 
-                      and subcategories on Wikipedia.
-                      The top person from each city was determined by using median pageviews (with a minimum of 1 year of traffic). We
-                      chose to include multiple occurrences for a single person because there is both no way to determine which is more
-                      accurate and people can “be from” multiple places. 
+                    <h4>Dataset</h4>
+                    <p>The complete list of films set in each country was gathered from thousands of 
+                      Wikipedia film pages, including short films and documentary films, under hundreds of 
+                      "Films set in X" (where X is a country/city/state, etc.) categories and subcategories on Wikipedia.
+                      Median daily page view was used to determine top 10 or fewer films. Since one film can be set in
+                      various countries, repeating occurrences of films were included on the map.
                     </p>
-                    <p>Get in touch with us by email at sup@pudding.cool.</p>
+                    <p>The unprocessed and final datasets are available on <a href='https://github.com/leminhtrang99/film-map' target='_blank'>GitHub</a>.</p>
+                    <p>Reach me by email at leminhtrang99@gmail.com for any questions!</p>
+                    
               </div>
             </section>
         </div>

@@ -48,19 +48,18 @@
 }
 
 #wikidef {
-  padding:1rem;
   background-color:#1a1a1a;
   font-family:'Futura',Helvetica,Arial,sans-serif;
   color: #c9c9c9;
   position:absolute;
-  top:18%;
+  top:16%;
   left:50%;
   width:90%;
-  max-width:20rem;
+  max-width:30rem;
   max-height:5rem;
   transform:translate(-50%,-50%);
   border-radius:6px;
-  /*border:2px solid #4878b1; */
+  border:2px solid #4878b1;
   display:none;
   font-size:14px;
   text-align: center;
@@ -111,13 +110,13 @@
 }
 #extract strong{
   font-weight:700;
-  color:#44da71;
+  color:#ecd06b;
 }
 #extract a{
   border: none;
   vertical-align: middle;
   display: none;
-  margin-left:1em;
+  margin-left:0.5em;
   color: #ecd06b;
 }
 #extract a.show{
@@ -193,6 +192,10 @@
   border-radius:6px;
   border:2px solid #ecd06b;
   /* display:none; */
-  font-size:14px;
+  font-size:16px;
   z-index:1001;
+}
+
+#credit--box a{
+  color:#c9c9c9;
 }
